@@ -1,12 +1,12 @@
 {
   "name": "munchkin",
   "version": "1.0.0",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/angular/angular.io/blob/master/LICENSE"
-    }
-  ],
+  "description": "Munchkin boardgame cardbase",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GAndriyS/munchkin_cardbase.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "@angular/common": "~2.1.1",
     "@angular/compiler": "~2.1.1",
@@ -16,9 +16,21 @@
     "@angular/platform-browser": "~2.1.1",
     "@angular/platform-browser-dynamic": "~2.1.1",
     "@angular/router": "~3.1.1",
-    "@angular/upgrade": "~2.1.1"
+    "@angular/upgrade": "~2.1.1",
+    "angular-in-memory-web-api": "~0.1.13",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "0.19.39",
+    "zone.js": "^0.6.25"
   },
   "devDependencies": {
-    "webpack": "^1.13.3"
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^6.0.45",
+    "concurrently": "^3.0.0",
+
+    "ts-loader": "^1.2.2",
+    "typescript": "^2.0.10",
+    "webpack": "v2.1.0-beta.26"
   }
 }
