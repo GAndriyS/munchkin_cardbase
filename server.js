@@ -1,13 +1,13 @@
 'use strict';
 
-let express = require('express');
-let path = require('path');
-let bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
 
-let index = require('./routes/index');
-let cards = require('./routes/cards');
+const index = require('./routes/index');
+const cards = require('./routes/cards');
 
-let app = express();
+const app = express();
 
 // View declaration
 app.set('views', path.join(__dirname, 'views'));
