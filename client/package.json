@@ -8,6 +8,8 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^6.0.45",
     "@angular/common": "~2.1.1",
     "@angular/compiler": "~2.1.1",
     "@angular/core": "~2.1.1",

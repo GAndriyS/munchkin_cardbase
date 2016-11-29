@@ -3,9 +3,9 @@ const path = require('path');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:5050',
     'webpack/hot/only-dev-server',
-    './client'
+    './client/src/app.module.ts'
   ],
   output: {
     filename: 'munchkin_cardbase.js',
@@ -28,7 +28,7 @@ module.exports = {
   devServer: {
     hot: true,
     proxy: {
-      '*': 'http://localhost:5050/'
+      '*': 'http://localhost:8000/'
     }
   }
 };

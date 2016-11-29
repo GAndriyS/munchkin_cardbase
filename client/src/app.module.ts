@@ -6,4 +6,4 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 
 export class AppModule { }
-console.log('Some test msg');
+console.log('Some test msg asdasd');

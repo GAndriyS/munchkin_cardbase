@@ -20,8 +20,6 @@
     "mongojs": "^2.4.0"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.34",
-    "@types/node": "^6.0.45",
     "concurrently": "^3.0.0",
     "ts-loader": "^1.2.2",
     "typescript": "^2.0.10",
