@@ -1,29 +1,40 @@
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const extractLESS = new ExtractTextPlugin({
+  filename: 'client/bin/css/style.css'
+});
 
 module.exports = {
-  entry: [
-    'webpack-dev-server/client?http://localhost:5050',
-    'webpack/hot/only-dev-server',
-    './client/src/app.module.ts'
-  ],
+  entry: {
+    'app': './client/src/app.module.ts'
+  },
+  devtool: 'sourcemap',
   output: {
-    filename: 'munchkin_cardbase.js',
-    path: path.join(__dirname, 'client/bin')
+    path: path.join(__dirname, 'client/bin'),
+    filename: 'js/[name].js',
+    chunkFilename: '[id].chunk.js'
   },
   resolve: {
-    // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    extensions: ['.ts', '.js', '.json', '.css', '.less', '.html']
   },
   module: {
     loaders: [
-      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { test: /\.tsx?$/, loader: 'ts-loader' }
+      {
+        test: /\.ts$/,
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader', '@angularclass/hmr-loader'],
+        exclude: [ /node_modules\//]
+      },
+      {
+        test: /\.less$/,
+        loader: extractLESS.extract(['css', 'sass'])
+      }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    extractLESS
   ],
   devServer: {
     hot: true,
