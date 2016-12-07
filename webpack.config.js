@@ -12,11 +12,10 @@ module.exports = {
   devtool: 'sourcemap',
   output: {
     path: path.join(__dirname, 'client/bin'),
-    filename: 'js/[name].js',
-    chunkFilename: '[id].chunk.js'
+    filename: 'js/[name].js'
   },
   resolve: {
-    extensions: ['.ts', '.js', '.json', '.css', '.less', '.html']
+    extensions: ['.ts', '.js', '.less']
   },
   module: {
     loaders: [
@@ -39,7 +38,7 @@ module.exports = {
   devServer: {
     hot: true,
     proxy: {
-      '*': 'http://localhost:8000/'
+      '**': 'http://localhost:5050/'
     }
   }
 };
