@@ -1,13 +1,11 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractLESS = new ExtractTextPlugin({
-  filename: 'client/bin/css/style.css'
-});
 
 module.exports = {
   entry: {
-    'app': './client/src/app.module.ts'
+    // app: './client/src/app.module.ts',
+    app: './client/src/styles/main.less'
   },
   devtool: 'sourcemap',
   output: {
@@ -21,19 +19,18 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader', '@angularclass/hmr-loader'],
-        exclude: [ /node_modules\//]
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader', '@angularclass/hmr-loader']
       },
       {
         test: /\.less$/,
-        loader: extractLESS.extract(['css', 'sass'])
+        loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!less-loader' })
       }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    extractLESS
+    new ExtractTextPlugin('css/[name].css')
   ],
   devServer: {
     hot: true,
