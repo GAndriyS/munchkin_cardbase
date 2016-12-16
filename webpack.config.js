@@ -11,7 +11,7 @@ module.exports = {
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'client/bin'),
-    publicPath: 'http://localhost:3000/client/bin/',
+    publicPath: 'http://localhost:3000/',
     filename: 'js/[name].js',
   },
   resolve: {
@@ -45,7 +45,7 @@ module.exports = {
   devServer: {
     hot: true,
     port: 3000,
-    contentBase: path.join(__dirname, 'client'),
-    publicPath: 'http://localhost:3000/bin/'
+    contentBase: path.join(__dirname, 'client/bin'),
+    publicPath: 'http://localhost:3000/'
   }
 };
