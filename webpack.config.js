@@ -33,7 +33,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin('css/style.css'),
     new HtmlWebpackPlugin({
-      filename: '../index.html'
+      filename: '../index.html',
+      template: 'client/src/index.tpl.html'
     }),
     new BrowserSyncPlugin({
       host: 'localhost',
