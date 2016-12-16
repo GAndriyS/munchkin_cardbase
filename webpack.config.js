@@ -5,8 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    // app: './client/src/app.module.ts',
-    app: './client/src/styles/main.less'
+    app: './client/src/app.module.ts'
   },
   devtool: 'sourcemap',
   output: {
