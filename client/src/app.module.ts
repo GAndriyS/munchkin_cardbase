@@ -8,19 +8,18 @@ import 'reflect-metadata';
 import 'zone.js';
 
 // APP
-import { LoginFormComponent }  from './app/login/login-form.component';
-import { LoginPageComponent }  from './app/login/login-page.component';
+import { AppComponent }  from './app/app.component';
+// import { LoginFormComponent }  from './app/login/login-form.component';
+// import { LoginPageComponent }  from './app/login/login-page.component';
 
 @NgModule({
   imports:      [ BrowserModule ],
   declarations: [
-    LoginFormComponent,
-    LoginPageComponent
+    AppComponent,
+    // LoginFormComponent,
+    // LoginPageComponent
   ],
-  bootstrap: [
-    LoginFormComponent,
-    LoginPageComponent
-  ]
+  bootstrap: [ AppComponent ]
 })
 
 export class AppModule {}

@@ -6,7 +6,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './client/src/app.module.ts'
+    app: './client/src/main.ts'
   },
   devtool: 'source-map',
   output: {
@@ -26,6 +26,14 @@ module.exports = {
       {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract('css-loader?sourceMap!less-loader?sourceMap')
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'raw-loader'
       }
     ]
   },
