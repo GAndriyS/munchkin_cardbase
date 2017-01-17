@@ -7,18 +7,12 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": true,
-    "noImplicitAny": true
+    "noImplicitAny": false
   },
   "compileOnSave": false,
   "buildOnSave": false,
   "exclude": [
     "node_modules",
     "client/node_modules"
-  ],
-  "typeRoots": [
-    "node_modules/@types"
-  ],
-  "types": [
-    "core-js"
   ]
 }

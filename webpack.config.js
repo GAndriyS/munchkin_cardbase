@@ -6,12 +6,12 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './client/src/app.module.ts'
+    app: './client/src/main.ts'
   },
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'client/bin'),
-    publicPath: 'http://localhost:3000/client/bin/',
+    publicPath: 'http://localhost:3000/',
     filename: 'js/[name].js',
   },
   resolve: {
@@ -26,6 +26,14 @@ module.exports = {
       {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract('css-loader?sourceMap!less-loader?sourceMap')
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'raw-loader'
       }
     ]
   },
@@ -45,7 +53,7 @@ module.exports = {
   devServer: {
     hot: true,
     port: 3000,
-    contentBase: path.join(__dirname, 'client'),
-    publicPath: 'http://localhost:3000/bin/'
+    contentBase: path.join(__dirname, 'client/bin'),
+    publicPath: 'http://localhost:3000/'
   }
 };

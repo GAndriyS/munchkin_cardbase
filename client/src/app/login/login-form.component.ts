@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 export class LoginData {
-  login: number;
+  login: string;
   pw: string;
 }
 
@@ -13,5 +13,4 @@ export class LoginData {
   `
 })
 
-export class LoginForm {}
-console.log('Component');
+export class LoginFormComponent {}
