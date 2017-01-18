@@ -54,6 +54,12 @@ module.exports = {
     hot: true,
     port: 3000,
     contentBase: path.join(__dirname, 'client/bin'),
-    publicPath: 'http://localhost:3000/'
+    publicPath: 'http://localhost:3000/',
+      proxy: {
+      '/': {
+        target: 'http://localhost:5050/',
+        secure: false
+      }
+    }
   }
 };
