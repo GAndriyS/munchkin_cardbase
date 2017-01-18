@@ -7,7 +7,7 @@ const passport = require('passport');
 
 const index = require('./routes/index');
 const cards = require('./routes/cards');
-// const authentication = require('./routes/authentication');
+const authentication = require('./routes/authentication');
 
 const app = express();
 
@@ -31,18 +31,7 @@ app.use(passport.session());
 // App routes
 app.use('/', index);
 app.use('/api', cards);
-// app.use('/login', authentication);
-
-
-// serialize and deserialize
-passport.serializeUser(function(user, done) {
-  console.log('serializeUser: ' + user);
-  done(null, user._id);
-});
-passport.deserializeUser(function(id, done) {
-  console.log(id);
-  done(null, id);
-});
+app.use('/auth', authentication);
 
 // Server
 let port = 5050;

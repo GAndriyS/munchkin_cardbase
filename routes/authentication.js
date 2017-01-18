@@ -1,39 +1,41 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const router = express.Router() ;
 const passport = require('passport');
-const GitHubStrategy = require('passport-github').Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+  done(null, obj);
+});
 
 passport.use(new GitHubStrategy({
     clientID: '90a8ada27cfa063c640f',
     clientSecret: 'de6621c5daf2a2e95d5822f00ae6db3e05e40b60',
-    callbackURL: 'http://localhost:5050/login/github/callback'
+    callbackURL: "http://127.0.0.1:5050/auth/github/callback"
   },
-  function(accessToken, refreshToken, profile, cb) {
-    return cb(null, profile);
+  (accessToken, refreshToken, profile, done) => {
+    process.nextTick(() => {
+      return done(null, profile);
+    });
   }
 ));
 
-passport.serializeUser(function(user, cb) {
-  cb(null, user);
-});
+router.get('/github',
+  passport.authenticate('github', { scope: [ 'user:email' ] }), (req, res) => {});
 
-passport.deserializeUser(function(obj, cb) {
-  cb(null, obj);
-});
+router.get('/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  (req, res) => {
+    res.redirect('/');
+  });
 
-// Login
-router.get('', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,contenttype');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  passport.authenticate('github');
-});
-
-router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), (req, res) => {
-  console.log(req, res);
+router.get('/logout', (req, res) => {
+  req.logout();
   res.redirect('/');
 });
 
