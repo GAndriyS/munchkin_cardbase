@@ -1,10 +1,22 @@
 import { Component } from '@angular/core';
+import { User } from './user';
 
 @Component({
   selector: 'application',
-  template: `Some Logo! And title - {{title}}`
+  templateUrl: './templates/app.tpl.html'
 })
 
 export class AppComponent {
-  title = 'Cardbase';
+  user: User;
+  constructor() {
+    let defaultUser: User = {
+      isLoggined: false,
+      name: 'unknown',
+      id: -1
+    }
+    this.user = defaultUser;
+  }
+  toggleLogin() {
+    this.user.isLoggined = !this.user.isLoggined;
+  }
 }

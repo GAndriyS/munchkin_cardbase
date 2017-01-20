@@ -1,0 +1,13 @@
+<div *ngIf="user.isLoggined">
+  <h2>User information: </h2>
+  user name : <strong>{{user.name}}</strong> <br>
+  user ID : <strong>{{user.id}}</strong> <br>
+  is user loggined : <strong>{{user.isLoggined}}</strong>
+</div>
+
+<br>
+
+<div *ngIf="!user.isLoggined">
+  <h2>Please log in</h2>
+</div>
+<button (click)="toggleLogin()">Toggle Login</button>
