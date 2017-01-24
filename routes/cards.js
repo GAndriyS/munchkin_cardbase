@@ -1,9 +1,9 @@
 'use strict';
 
-let express = require('express');
-let mongojs = require('mongojs');
-let router = express.Router();
-let db = mongojs('mongodb://admin:admin@ds153667.mlab.com:53667/munchkin_cardbase', ['door_cards', 'treasure_cards']);
+const express = require('express');
+const mongojs = require('mongojs');
+const router = express.Router();
+const db = mongojs('mongodb://admin:admin@ds153667.mlab.com:53667/munchkin_cardbase', ['door_cards', 'treasure_cards']);
 
 // Get All Door Cards
 router.get('/door/cards', (req, res, next) => {

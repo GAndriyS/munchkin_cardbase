@@ -5,6 +5,9 @@ const router = express.Router() ;
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 
+const mongojs = require('mongojs');
+const db = mongojs('mongodb://admin:admin@ds153667.mlab.com:53667/munchkin_cardbase', ['users']);
+
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -19,20 +22,32 @@ passport.use(new GitHubStrategy({
     callbackURL: "http://127.0.0.1:5050/auth/github/callback"
   },
   (accessToken, refreshToken, profile, done) => {
-    process.nextTick(() => {
+    db.users.findOne( {userID: profile.id}, (error, user) => {
+      if (user === null) {
+        db.users.insert({ 
+          userID: profile.id, 
+          login: profile.username, 
+          profile_url: profile.profileUrl, 
+          displayed_name: profile.displayName 
+        });
+      }
       return done(null, profile);
     });
   }
 ));
 
 router.get('/github',
-  passport.authenticate('github', { scope: [ 'user:email' ] }), (req, res) => {});
+  passport.authenticate('github', { scope: [ 'user:email' ] }));
 
 router.get('/github/callback', 
   passport.authenticate('github', { failureRedirect: '/login' }),
   (req, res) => {
-    res.redirect('/');
+    res.redirect('/#dashboard');
   });
+
+router.get('/userData', (req, res) => {
+  res.json(req.user);
+});
 
 router.get('/logout', (req, res) => {
   req.logout();
