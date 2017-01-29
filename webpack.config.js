@@ -59,6 +59,10 @@ module.exports = {
       '/': {
         target: 'http://localhost:5050/',
         secure: false
+      },
+      '/dashboard': {
+        target: 'http://localhost:5050/',
+        secure: false
       }
     }
   }

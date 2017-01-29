@@ -24,11 +24,11 @@ passport.use(new GitHubStrategy({
   (accessToken, refreshToken, profile, done) => {
     db.users.findOne( {userID: profile.id}, (error, user) => {
       if (user === null) {
-        db.users.insert({ 
-          userID: profile.id, 
-          login: profile.username, 
-          profile_url: profile.profileUrl, 
-          displayed_name: profile.displayName 
+        db.users.insert({
+          userID: profile.id,
+          login: profile.username,
+          profile_url: profile.profileUrl,
+          displayed_name: profile.displayName
         });
       }
       return done(null, profile);
@@ -39,10 +39,10 @@ passport.use(new GitHubStrategy({
 router.get('/github',
   passport.authenticate('github', { scope: [ 'user:email' ] }));
 
-router.get('/github/callback', 
+router.get('/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   (req, res) => {
-    res.redirect('/#dashboard');
+    res.redirect('/dashboard');
   });
 
 router.get('/userData', (req, res) => {
