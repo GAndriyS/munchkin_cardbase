@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -44,19 +44,19 @@ module.exports = {
       filename: '../index.html',
       template: 'client/src/index.tpl.html'
     }),
-    new BrowserSyncPlugin({
-      host: 'localhost',
-      files: ['./bin'],
-      proxy: "localhost:3000"
-    })
+    // new BrowserSyncPlugin({
+    //   host: 'localhost',
+    //   files: ['./bin'],
+    //   proxy: "localhost:3000"
+    // })
   ],
   devServer: {
     hot: true,
     port: 3000,
     contentBase: path.join(__dirname, 'client/bin'),
     publicPath: 'http://localhost:3000/',
-      proxy: {
-      '/': {
+    proxy: {
+      '*': {
         target: 'http://localhost:5050/',
         secure: false
       }
