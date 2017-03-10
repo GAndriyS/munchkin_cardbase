@@ -9,6 +9,7 @@ import 'zone.js';
 // APP
 import { AppComponent } from './app/app.component';
 import { LoginComponent } from './app/login/login.component';
+import { DashboardComponent } from './app/dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -22,12 +23,17 @@ import { LoginComponent } from './app/login/login.component';
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
       }
     ])
   ],
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   bootstrap: [ AppComponent ]
 })

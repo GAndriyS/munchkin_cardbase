@@ -14,7 +14,8 @@
   },
   "homepage": "https://github.com/GAndriyS/munchkin_cardbase#readme",
   "scripts": {
-    "start": "node server.js && webpack"
+    "start": "node server.js",
+    "dev": "webpack-dev-server"
   },
   "dependencies": {
     "body-parser": "^1.15.2",

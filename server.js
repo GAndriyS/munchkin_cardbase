@@ -33,7 +33,7 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/api', cards);
 app.use('/auth', authentication);
-  
+
 // Server
 let port = 5050;
 app.listen(port, () => {
