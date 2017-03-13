@@ -8,7 +8,7 @@
     "url": "git+https://github.com/GAndriyS/munchkin_cardbase.git"
   },
   "author": "andrii_gorbatiuk@epam.com",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/GAndriyS/munchkin_cardbase/issues"
   },
