@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import 'reflect-metadata';
 import 'zone.js';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 // APP
 import { AppComponent } from './app/app.component';
 import { LoginComponent } from './app/login/login.component';
