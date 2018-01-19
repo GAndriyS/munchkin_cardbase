@@ -1,6 +1,6 @@
 {
   "name": "munchkin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "munchkin boardgame card base",
   "main": "server.js",
   "repository": {
