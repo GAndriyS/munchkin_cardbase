@@ -1,2 +1,4 @@
-/client/node_modules
 /node_modules
+.vscode
+/client/node_modules
+/client/bin

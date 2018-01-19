@@ -1,13 +1,16 @@
 'use strict';
 
-let express = require('express');
-let path = require('path');
-let bodyParser = require('body-parser');
+const express = require('express');
+const session = require('express-session');
+const path = require('path');
+const bodyParser = require('body-parser');
+const passport = require('passport');
 
-let index = require('./routes/index');
-let cards = require('./routes/cards');
+const index = require('./routes/index');
+const cards = require('./routes/cards');
+const authentication = require('./routes/authentication');
 
-let app = express();
+const app = express();
 
 // View declaration
 app.set('views', path.join(__dirname, 'views'));
@@ -21,9 +24,15 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+// Initialize Passport and restore authentication state, if any, from the session.
+app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // App routes
 app.use('/', index);
 app.use('/api', cards);
+app.use('/auth', authentication);
 
 // Server
 let port = 5050;
